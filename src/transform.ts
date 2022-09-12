@@ -90,6 +90,28 @@ ${keysString}
 }
 `;
   },
+  python: function (tags: string[], keys: string[]) {
+    const tagsString = tags
+      .map((tag: string) => `    ${Case.constant(tag)} = "${tag}"`)
+      .join("\n");
+
+    const keysString = keys
+      .map((key: string) => `    ${Case.constant(key)} = "${key}"`)
+      .join("\n");
+
+    return `# ${disclaimerText}
+
+from enum import Enum
+
+class VexillaTags(Enum):
+${tagsString}
+
+
+class VexillaKeys(Enum):
+${keysString}
+
+`;
+  },
   go: function (tags: string[], keys: string[]) {
     const tagsString = tags
       .map(
