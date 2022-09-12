@@ -47,7 +47,6 @@ ${keysString}
 };
 `;
   },
-
   elixir: function (tags: string[], keys: string[]) {
     const tagsString = tags
       .map((tag: string) => `:vexilla_tag_${Case.snake(tag)} = "${tag}"`)
@@ -64,6 +63,31 @@ ${tagsString}
 
 # Keys
 ${keysString}
+`;
+  },
+  php: function (tags: string[], keys: string[]) {
+    const tagsString = tags
+      .map((tag: string) => `  public static $${Case.camel(tag)} = "${tag}";`)
+      .join("\n");
+
+    const keysString = keys
+      .map((key: string) => `  public static $${Case.camel(key)} = "${key}";`)
+      .join("\n");
+
+    return `<?php
+namespace Vexilla;
+
+// ${disclaimerText}
+
+// Tags
+class Tags {
+${tagsString}
+}
+
+// Keys
+class Keys {
+${keysString}
+}
 `;
   },
   go: function (tags: string[], keys: string[]) {
