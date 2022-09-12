@@ -3,8 +3,18 @@ import Case from "case";
 const disclaimerText =
   "This file has been generated from your remote Vexilla Feature Flags file. You should NOT modify this file directly. It is encouraged to gitignore this file and generate it on the fly during build/compilation.";
 
+type Language =
+  | "js"
+  | "ts"
+  | "elixir"
+  | "php"
+  | "python"
+  | "csharp"
+  | "go"
+  | "rust";
+
 const languageTransformers: Record<
-  string,
+  Language,
   (tags: string[], keys: string[]) => string
 > = {
   js: function (tags: string[], keys: string[]) {
@@ -112,6 +122,33 @@ ${keysString}
 
 `;
   },
+  csharp: function (tags: string[], keys: string[]) {
+    const tagsString = tags
+      .map(
+        (tag: string) =>
+          `    public static readonly string ${Case.pascal(tag)}  = "${tag}";`
+      )
+      .join("\n");
+
+    const keysString = keys
+      .map(
+        (key: string) =>
+          `    public static readonly string ${Case.pascal(key)}  = "${key}";`
+      )
+      .join("\n");
+
+    return `// ${disclaimerText}
+
+namespace Vexilla.Client {
+  public static class Tags {
+${tagsString}
+  }
+
+  public static class Flags {
+${keysString}
+  }
+}`;
+  },
   go: function (tags: string[], keys: string[]) {
     const tagsString = tags
       .map(
@@ -162,12 +199,32 @@ ${keysString}
   },
 };
 
+const languageAliases: Record<string, Language> = {
+  cs: "csharp",
+  "c#": "csharp",
+  csharp: "csharp",
+  javascript: "js",
+  js: "js",
+  typescript: "ts",
+  ts: "ts",
+  golang: "go",
+  go: "go",
+  py: "python",
+  python: "python",
+  ex: "elixir",
+  elixir: "elixir",
+  rs: "rust",
+  rust: "rust",
+};
+
 export function transformConstants(
   language: string,
   tags: string[],
   keys: string[]
 ) {
-  const transformer = languageTransformers[language.toLowerCase()];
+  const coercedLanguage = languageAliases[language.toLowerCase()];
+
+  const transformer = languageTransformers[coercedLanguage];
 
   if (!transformer) {
     throw new Error(`No Transformer found for language: ${language}`);
