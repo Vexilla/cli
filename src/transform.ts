@@ -13,7 +13,8 @@ type Language =
   | "go"
   | "ruby"
   | "rust"
-  | "lua";
+  | "lua"
+  | "dart";
 
 const languageTransformers: Record<
   Language,
@@ -199,7 +200,6 @@ ${tagsString}
 ${keysString}
 `;
   },
-
   ruby: function (tags: string[], keys: string[]) {
     const tagsString = tags
       .map((tag: string) => `    ${Case.constant(tag)} = "${tag}"`)
@@ -222,7 +222,6 @@ ${keysString}
 end
 `;
   },
-
   lua: function (tags: string[], keys: string[]) {
     const tagsString = tags
       .map((tag: string) => `    ${Case.constant(tag)} = "${tag}"`)
@@ -241,6 +240,27 @@ ${tagsString}
   Flags = {
 ${keysString}
   }
+}
+`;
+  },
+
+  dart: function (tags: string[], keys: string[]) {
+    const tagsString = tags
+      .map((tag: string) => `  static String ${Case.constant(tag)} = "${tag}";`)
+      .join("\n");
+
+    const keysString = keys
+      .map((key: string) => `  static String ${Case.constant(key)} = "${key}";`)
+      .join("\n");
+
+    return `// ${disclaimerText}
+
+abstract class VexillaTags {
+${tagsString}
+}
+
+abstract class VexillaFlags {
+${keysString}
 }
 `;
   },
@@ -265,6 +285,8 @@ const languageAliases: Record<string, Language> = {
   rs: "rust",
   rust: "rust",
   lua: "lua",
+  flutter: "dart",
+  dart: "dart",
 };
 
 export function transformConstants(
