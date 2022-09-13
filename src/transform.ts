@@ -12,7 +12,8 @@ type Language =
   | "csharp"
   | "go"
   | "ruby"
-  | "rust";
+  | "rust"
+  | "lua";
 
 const languageTransformers: Record<
   Language,
@@ -221,6 +222,28 @@ ${keysString}
 end
 `;
   },
+
+  lua: function (tags: string[], keys: string[]) {
+    const tagsString = tags
+      .map((tag: string) => `    ${Case.constant(tag)} = "${tag}"`)
+      .join("\n");
+
+    const keysString = keys
+      .map((key: string) => `    ${Case.constant(key)} = "${key}"`)
+      .join("\n");
+
+    return `-- ${disclaimerText}
+
+return {
+  Tags = {
+${tagsString}
+  }
+  Flags = {
+${keysString}
+  }
+}
+`;
+  },
 };
 
 const languageAliases: Record<string, Language> = {
@@ -241,6 +264,7 @@ const languageAliases: Record<string, Language> = {
   ruby: "ruby",
   rs: "rust",
   rust: "rust",
+  lua: "lua",
 };
 
 export function transformConstants(
