@@ -1,17 +1,8 @@
 import path from "path";
 import fs from "fs-extra";
 import axios from "axios";
-import Case from "case";
 import { VexillaFlags } from "@vexilla/client";
 
-import {
-  quicktype,
-  InputData,
-  jsonInputForTargetLanguage,
-  JSONSchemaInput,
-  FetchingJSONSchemaStore,
-} from "quicktype-core";
-import { customJSON } from "./custom-json";
 import { transformConstants } from "./transform";
 
 export async function outputTypes(

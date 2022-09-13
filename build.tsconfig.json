@@ -10,7 +10,8 @@
     "listFiles": true,
     "newLine": "LF",
     "noEmitOnError": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "outDir": "./dist"
   },
   "exclude": ["./node_modules/**/*"],
   "include": ["./src/**/*.ts"]

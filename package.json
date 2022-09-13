@@ -2,10 +2,13 @@
   "name": "@vexilla/cli",
   "version": "0.0.1",
   "description": "",
-  "main": "dist/index.js",
+  "main": "./dist/cli.js",
+  "files": [
+    "./dist"
+  ],
   "scripts": {
     "dev": "ts-node  --project ./dev.tsconfig.json ./src/cli.ts",
-    "build": "tsc --project ./tsconfig.json",
+    "build": "tsc --project ./build.tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
