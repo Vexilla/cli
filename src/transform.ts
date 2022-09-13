@@ -246,11 +246,11 @@ ${keysString}
 
   dart: function (tags: string[], keys: string[]) {
     const tagsString = tags
-      .map((tag: string) => `  static String ${Case.constant(tag)} = "${tag}";`)
+      .map((tag: string) => `  static String ${Case.camel(tag)} = "${tag}";`)
       .join("\n");
 
     const keysString = keys
-      .map((key: string) => `  static String ${Case.constant(key)} = "${key}";`)
+      .map((key: string) => `  static String ${Case.camel(key)} = "${key}";`)
       .join("\n");
 
     return `// ${disclaimerText}
