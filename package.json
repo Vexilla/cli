@@ -3,14 +3,17 @@
   "version": "0.0.4",
   "private": false,
   "description": "",
-  "main": "./dist/cli.js",
-  "bin": "./dist/cli.js",
+  "main": "./bin/cli.js",
+  "bin": "./bin/cli.js",
   "files": [
-    "./dist"
+    "./bin"
   ],
   "scripts": {
     "dev": "ts-node  --project ./dev.tsconfig.json ./src/cli.ts",
     "build": "tsc --project ./build.tsconfig.json",
+    "package": "pkg . --out-path=./dist",
+    "prepackage": "yarn build",
+    "prepublish": "yarn build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

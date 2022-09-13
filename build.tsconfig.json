@@ -11,7 +11,7 @@
     "newLine": "LF",
     "noEmitOnError": true,
     "esModuleInterop": true,
-    "outDir": "./dist"
+    "outDir": "./bin"
   },
   "exclude": ["./node_modules/**/*"],
   "include": ["./src/**/*.ts"]
