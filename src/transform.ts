@@ -11,6 +11,7 @@ type Language =
   | "python"
   | "csharp"
   | "go"
+  | "ruby"
   | "rust";
 
 const languageTransformers: Record<
@@ -197,6 +198,29 @@ ${tagsString}
 ${keysString}
 `;
   },
+
+  ruby: function (tags: string[], keys: string[]) {
+    const tagsString = tags
+      .map((tag: string) => `    ${Case.constant(tag)} = "${tag}"`)
+      .join("\n");
+
+    const keysString = keys
+      .map((key: string) => `    ${Case.constant(key)} = "${key}"`)
+      .join("\n");
+
+    return `# ${disclaimerText}
+
+module Vexilla
+  class Tags
+${tagsString}
+  end
+
+  class Flags
+${keysString}
+  end
+end
+`;
+  },
 };
 
 const languageAliases: Record<string, Language> = {
@@ -213,6 +237,8 @@ const languageAliases: Record<string, Language> = {
   python: "python",
   ex: "elixir",
   elixir: "elixir",
+  rb: "ruby",
+  ruby: "ruby",
   rs: "rust",
   rust: "rust",
 };
