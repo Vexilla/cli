@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { outputTypes } from "./utilities";
 
 require("yargs")
