@@ -1,5 +1,11 @@
 # @vexilla/cli
 
+## 0.0.8
+
+### Patch Changes
+
+- 2b39904: try again
+
 ## 0.0.7
 
 ### Patch Changes
