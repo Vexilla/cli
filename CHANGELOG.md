@@ -1,5 +1,11 @@
 # @vexilla/cli
 
+## 0.0.14
+
+### Patch Changes
+
+- ccacba5: use --tags instead of --follow-tags
+
 ## 0.0.13
 
 ### Patch Changes
