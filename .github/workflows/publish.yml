@@ -42,7 +42,7 @@ jobs:
 
       - name: Push Tags
         if: steps.changesets.outputs.hasChangesets == 'false'
-        run: git push --follow-tags
+        run: git push --tags
 
       - name: Release
         uses: softprops/action-gh-release@v1
