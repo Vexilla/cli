@@ -36,9 +36,15 @@ jobs:
         if: steps.changesets.outputs.hasChangesets == 'true'
         run: git push --set-upstream origin changeset-release/main
 
+      - name: Tag Commit
+        if: steps.changesets.outputs.hasChangesets == 'true'
+        run: git tag "v$(node -pe "require('./package.json').version")"
+
       - name: Push Tags
         if: steps.changesets.outputs.hasChangesets == 'true'
         run: git push --follow-tags
+
+      # node -pe "require('./package.json').version"
 
       - name: Release
         uses: softprops/action-gh-release@v1
