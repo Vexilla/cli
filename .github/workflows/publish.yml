@@ -34,7 +34,7 @@ jobs:
 
       - name: Set upstream
         if: steps.changesets.outputs.hasChangesets == 'false'
-        run: git push --set-upstream origin changeset-release/main
+        run: git push --set-upstream origin main
 
       - name: Tag Commit
         if: steps.changesets.outputs.hasChangesets == 'false'
@@ -43,8 +43,6 @@ jobs:
       - name: Push Tags
         if: steps.changesets.outputs.hasChangesets == 'false'
         run: git push --follow-tags
-
-      # node -pe "require('./package.json').version"
 
       - name: Release
         uses: softprops/action-gh-release@v1
