@@ -11,9 +11,21 @@
   "scripts": {
     "dev": "ts-node  --project ./dev.tsconfig.json ./src/cli.ts",
     "build": "tsc --project ./build.tsconfig.json",
-    "package": "pkg . --out-path=./dist",
+    "package:win:x64": "pkg . -t=node14-win-x64 -o=./dist/win/vexilla.exe -C --no-bytecode --public-packages \"*\" --public",
+    "package:linux:x64": "pkg . -t=node14-linux-x64 -o=./dist/linux/vexilla -C --no-bytecode --public-packages \"*\" --public",
+    "package:mac:x64": "pkg . -t=node14-mac-x64 -o=./dist/mac/vexilla -C --no-bytecode --public-packages \"*\" --public",
+    "package:win:arm64": "pkg . -t=node14-win-x64 -o=./dist/win/vexilla.exe -C --no-bytecode --public-packages \"*\" --public",
+    "package:linux:arm64": "pkg . -t=node14-linux-x64 -o=./dist/linux/vexilla -C --no-bytecode --public-packages \"*\" --public",
+    "package:mac:arm64": "pkg . -t=node14-mac-x64 -o=./dist/mac/vexilla -C --no-bytecode --public-packages \"*\" --public",
+    "package:win": "npm-run-all -p package:win:x64 package:win:arm64",
+    "package:linux": "npm-run-all -p package:linux:x64 package:linux:arm64",
+    "package:mac": "npm-run-all -p package:mac:x64 package:mac:arm64",
+    "package": "npm-run-all -p package:win package:linux package:mac",
     "prepackage": "yarn build",
     "prepublish": "yarn build",
+    "isBehind": "git fetch && ts-node scripts/is-behind.ts",
+    "changeset:core": "changeset ",
+    "changeset:safe": "npm-run-all -s isBehind changeset:core",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -34,10 +46,12 @@
     "yargs": "^17.5.1"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.21.0",
     "@types/fs-extra": "^9.0.13",
     "@types/readable-stream": "^2.3.14",
     "@types/urijs": "^1.19.19",
     "@vexilla/client": "^0.0.17",
+    "npm-run-all": "^4.1.5",
     "pkg": "^5.8.0",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.3"
