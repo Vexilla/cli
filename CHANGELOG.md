@@ -1,5 +1,11 @@
 # @vexilla/cli
 
+## 0.0.7
+
+### Patch Changes
+
+- 25fd44c: fix timing of release/publish
+
 ## 0.0.6
 
 ### Patch Changes
