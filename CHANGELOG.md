@@ -1,5 +1,11 @@
 # @vexilla/cli
 
+## 0.0.13
+
+### Patch Changes
+
+- d5d53b7: change release triggers
+
 ## 0.0.12
 
 ### Patch Changes
