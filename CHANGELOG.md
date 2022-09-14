@@ -1,5 +1,11 @@
 # @vexilla/cli
 
+## 0.0.11
+
+### Patch Changes
+
+- 85d013e: change tag timing
+
 ## 0.0.10
 
 ### Patch Changes
