@@ -1,5 +1,11 @@
 # @vexilla/cli
 
+## 0.0.10
+
+### Patch Changes
+
+- 3466cb5: change timing
+
 ## 0.0.9
 
 ### Patch Changes
