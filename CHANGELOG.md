@@ -1,5 +1,11 @@
 # @vexilla/cli
 
+## 0.0.12
+
+### Patch Changes
+
+- 22387e1: change upstream
+
 ## 0.0.11
 
 ### Patch Changes
