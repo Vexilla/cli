@@ -40,7 +40,8 @@ jobs:
         uses: mathiasvr/command-output@v1
         id: get_tag_name
         if: steps.changesets.outputs.hasChangesets == 'false'
-        run: echo "v$(node -pe "require('./package.json').version")"
+        with:
+          run: echo "v$(node -pe "require('./package.json').version")"
 
       - name: Tag Commit
         if: steps.changesets.outputs.hasChangesets == 'false'
