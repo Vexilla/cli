@@ -1,5 +1,11 @@
 # @vexilla/cli
 
+## 0.0.15
+
+### Patch Changes
+
+- d7af769: add tag_name to release job
+
 ## 0.0.14
 
 ### Patch Changes
