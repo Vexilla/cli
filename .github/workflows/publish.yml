@@ -32,8 +32,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: git push --set-upstream origin changeset-release/main
-      - run: git push --follow-tags
+      - name: Set upstream
+        if: steps.changesets.outputs.published == 'true'
+        run: git push --set-upstream origin changeset-release/main
+
+      - name: Push Tags
+        if: steps.changesets.outputs.published == 'true'
+        run: git push --follow-tags
 
       - name: Release
         uses: softprops/action-gh-release@v1
