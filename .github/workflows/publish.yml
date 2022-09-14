@@ -42,11 +42,12 @@ jobs:
 
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
+        if: steps.changesets.outputs.published == 'false'
         with:
           files: ./dist/*
 
       - name: Publish
+        if: steps.changesets.outputs.published == 'false'
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
