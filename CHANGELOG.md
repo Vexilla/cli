@@ -1,5 +1,12 @@
 # @vexilla/cli
 
+## 0.0.9
+
+### Patch Changes
+
+- 2e0b37a: add tag script
+- 6420edb: one more again
+
 ## 0.0.8
 
 ### Patch Changes
