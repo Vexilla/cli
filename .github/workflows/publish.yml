@@ -33,15 +33,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set upstream
-        if: steps.changesets.outputs.hasChangesets == 'true'
+        if: steps.changesets.outputs.hasChangesets == 'false'
         run: git push --set-upstream origin changeset-release/main
 
       - name: Tag Commit
-        if: steps.changesets.outputs.hasChangesets == 'true'
+        if: steps.changesets.outputs.hasChangesets == 'false'
         run: git tag "v$(node -pe "require('./package.json').version")"
 
       - name: Push Tags
-        if: steps.changesets.outputs.hasChangesets == 'true'
+        if: steps.changesets.outputs.hasChangesets == 'false'
         run: git push --follow-tags
 
       # node -pe "require('./package.json').version"
