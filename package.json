@@ -20,7 +20,7 @@
     "package:win": "npm-run-all -p package:win:x64 package:win:arm64",
     "package:linux": "npm-run-all -p package:linux:x64 package:linux:arm64",
     "package:mac": "npm-run-all -p package:mac:x64 package:mac:arm64",
-    "package": "npm-run-all -p package:win package:linux package:mac",
+    "package": "npm-run-all -p package:mac:x64",
     "prepackage": "yarn build",
     "prepublish": "yarn build",
     "isBehind": "git fetch && ts-node scripts/is-behind.ts",
