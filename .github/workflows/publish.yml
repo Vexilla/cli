@@ -33,21 +33,21 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set upstream
-        if: steps.changesets.outputs.published == 'true'
+        if: steps.changesets.outputs.hasChangesets == 'true'
         run: git push --set-upstream origin changeset-release/main
 
       - name: Push Tags
-        if: steps.changesets.outputs.published == 'true'
+        if: steps.changesets.outputs.hasChangesets == 'true'
         run: git push --follow-tags
 
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: steps.changesets.outputs.published == 'false'
+        if: steps.changesets.outputs.hasChangesets == 'false'
         with:
           files: ./dist/*
 
       - name: Publish
-        if: steps.changesets.outputs.published == 'false'
+        if: steps.changesets.outputs.hasChangesets == 'false'
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
