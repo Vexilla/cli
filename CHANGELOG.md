@@ -1,5 +1,11 @@
 # @vexilla/cli
 
+## 0.0.16
+
+### Patch Changes
+
+- 38cc4bc: assign tag_name
+
 ## 0.0.15
 
 ### Patch Changes
