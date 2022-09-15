@@ -1,5 +1,11 @@
 # @vexilla/cli
 
+## 0.0.17
+
+### Patch Changes
+
+- c1e8d3d: zip binaries
+
 ## 0.0.16
 
 ### Patch Changes
