@@ -55,6 +55,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: steps.changesets.outputs.hasChangesets == 'false'
         with:
+          body_path: CHANGELOG.md
           files: ./dist/zips/*
           tag_name: ${{steps.get_tag_name.outputs.stdout}}
 
