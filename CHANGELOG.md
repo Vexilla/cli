@@ -1,5 +1,11 @@
 # @vexilla/cli
 
+## 0.0.18
+
+### Patch Changes
+
+- 17b7a5b: fix release assets
+
 ## 0.0.17
 
 ### Patch Changes
