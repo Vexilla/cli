@@ -1,5 +1,11 @@
 # @vexilla/cli
 
+## 0.0.19
+
+### Patch Changes
+
+- d1b2088: fix windows and linux zip pathing
+
 ## 0.0.18
 
 ### Patch Changes
