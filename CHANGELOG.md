@@ -1,5 +1,11 @@
 # @vexilla/cli
 
+## 0.0.20
+
+### Patch Changes
+
+- 97ea6ca: add changelog to releases output
+
 ## 0.0.19
 
 ### Patch Changes
