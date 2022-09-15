@@ -45,7 +45,7 @@ jobs:
 
       - name: Tag Commit
         if: steps.changesets.outputs.hasChangesets == 'false'
-        run: git tag {{steps.get_tag_name.outputs.stdout}}
+        run: git tag ${{steps.get_tag_name.outputs.stdout}}
 
       - name: Push Tags
         if: steps.changesets.outputs.hasChangesets == 'false'
@@ -55,7 +55,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: steps.changesets.outputs.hasChangesets == 'false'
         with:
-          files: ./dist/*/*
+          files: ./dist/zips/*
           tag_name: ${{steps.get_tag_name.outputs.stdout}}
 
       - name: Publish
