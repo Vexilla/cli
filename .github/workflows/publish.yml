@@ -15,7 +15,11 @@ jobs:
 
       - run: yarn
 
+      - run: yarn build
+        if: steps.changesets.outputs.hasChangesets == 'true'
+
       - run: yarn package
+        if: steps.changesets.outputs.hasChangesets == 'false'
 
       - name: Editing .npmrc
         run: |
