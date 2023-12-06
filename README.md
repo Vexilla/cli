@@ -1,3 +1,7 @@
+# Warning: Repo Archived
+
+**This repo is archived. The CLI tool is now maintained in the main monorepo: https://github.com/vexilla/vexilla/apps/cli**
+
 # Vexilla CLI
 
 This tool is meant to encompass any of the boilerplate and tasks that go along with using the Vexilla Feature Flag System.
